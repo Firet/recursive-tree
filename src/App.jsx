@@ -6,6 +6,7 @@ import "./styles.css";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { findNodeAndDelete } from "./helpers/findNodeAndDelete";
 import Button from '@mui/material/Button';
+import Switch from '@mui/material/Switch';
 
 // The dynamic tree takes user input from the form and adds it to state
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
   );
   // Set the value received from the local storage to a local state
   const [newData, setNewData] = React.useState([treeInLocalStorage]);
-  // const [newData, setNewData] = React.useState([]);
+  const [editable, setEditable] = React.useState(false);
 
   console.log("treeInLocalStorage", treeInLocalStorage);
   console.log("top level app", newData);
@@ -47,7 +48,7 @@ export default function App() {
     }
   }
 
-  function handleRemoveTree() {
+  function resetTree() {
     setNewData([]);
     setTreeInLocalStorage([]);
   }
@@ -65,17 +66,23 @@ export default function App() {
     <div className="App">
       <Form handleSubmit={handleSubmitOriginal} />
       <section className="dynamic">
-        <h2>Tree dynamic</h2>
-        <Tree dynamicData={newData} deleteNode={deleteNode} />
+        <h2>Recursive Tree</h2>
+        <Tree dynamicData={newData} deleteNode={deleteNode} editable={editable} />
       </section>
-      <div>
-        {/* <p> new data[0].name es: {newData[0]?.name}</p>
-        <p> new data del hijo: {newData[0]?.children[0]?.name}</p>
-        <p> new data del nieto: {newData[0]?.children[0]?.children[0]?.name}</p> */}
-      </div>
-      <Button variant="contained" type="button" onClick={handleRemoveTree}>
-        Remove Tree
+      <Button variant="contained" type="button" onClick={resetTree}>
+        Reset Tree
       </Button>
+
+      <div className="toggle-switch">
+      <h4>Enable tree editing</h4>
+
+        <Switch
+          checked={editable}
+          onChange={(event) => setEditable(event.target.checked)}
+          inputProps={{ 'aria-label': 'controlled' }}
+        />
+
+      </div>
     </div>
   );
 }

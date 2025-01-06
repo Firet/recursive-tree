@@ -2,7 +2,7 @@ import React from "react";
 import Button from '@mui/material/Button';
 
 export default function ListItem(props) {
-  const { item, level, deleteNode } = props;
+  const { item, level, deleteNode, editable } = props;
   console.log("%cInside Listitem", "color: purple", item);
   return (
     <article
@@ -14,7 +14,7 @@ export default function ListItem(props) {
       <p>
         {item.name}
       </p>
-      <Button onClick={() => deleteNode(item.name)}>Delete</Button>
+      {editable && <Button onClick={() => deleteNode(item.name)}>Delete</Button>}
     </article>
   );
 }

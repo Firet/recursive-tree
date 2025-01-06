@@ -41,3 +41,11 @@
   min-height: 50vh;
   width: 100%;
 }
+
+.add-button {
+  margin-top: 40px !important;
+}
+
+.toggle-switch {
+  margin-top: 40px !important;
+}

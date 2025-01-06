@@ -18,21 +18,24 @@ export default function Form(props) {
         })
       }
     >
+      <br />
       <TextField
         label="Name"
         variant="standard"
         value={newName}
         onChange={(e) => setNewName(e.target.value)}
-        required // Add required prop for validation
+        required
       />
+      <br />
       <TextField
         label="Parent (Optional)"
         variant="standard"
         value={parent}
         onChange={(e) => setParent(e.target.value)}
       />
-      <Button variant="contained" type="submit">
-        Submit
+      <br />
+      <Button variant="contained" type="submit" className="add-button">
+        Add Node
       </Button>
     </form>
   );
