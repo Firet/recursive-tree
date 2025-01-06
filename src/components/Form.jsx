@@ -1,4 +1,6 @@
 import React from "react";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 export default function Form(props) {
   const { handleSubmit } = props;
@@ -12,23 +14,26 @@ export default function Form(props) {
         handleSubmit(e, {
           name: newName,
           children: [],
-          parent: parent || null
+          parent: parent || null,
         })
       }
     >
-      <label htmlFor="name">Name</label>
-      <input
-        type="text"
+      <TextField
+        label="Name"
+        variant="standard"
         value={newName}
         onChange={(e) => setNewName(e.target.value)}
+        required // Add required prop for validation
       />
-      <label htmlFor="parent">Parent</label>
-      <input
-        type="text"
+      <TextField
+        label="Parent (Optional)"
+        variant="standard"
         value={parent}
         onChange={(e) => setParent(e.target.value)}
       />
-      <button>Submit</button>
+      <Button variant="contained" type="submit">
+        Submit
+      </Button>
     </form>
   );
 }

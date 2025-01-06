@@ -5,6 +5,7 @@ import { findNodeOriginal } from "./helpers/findNodeOriginal";
 import "./styles.css";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { findNodeAndDelete } from "./helpers/findNodeAndDelete";
+import Button from '@mui/material/Button';
 
 // The dynamic tree takes user input from the form and adds it to state
 export default function App() {
@@ -72,9 +73,9 @@ export default function App() {
         <p> new data del hijo: {newData[0]?.children[0]?.name}</p>
         <p> new data del nieto: {newData[0]?.children[0]?.children[0]?.name}</p> */}
       </div>
-      <button type="button" onClick={handleRemoveTree}>
+      <Button variant="contained" type="button" onClick={handleRemoveTree}>
         Remove Tree
-      </button>
+      </Button>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import Button from '@mui/material/Button';
 
 export default function ListItem(props) {
   const { item, level, deleteNode } = props;
@@ -13,7 +14,7 @@ export default function ListItem(props) {
       <p>
         {item.name}
       </p>
-      <button onClick={() => deleteNode(item.name)}>Delete</button>
+      <Button onClick={() => deleteNode(item.name)}>Delete</Button>
     </article>
   );
 }
