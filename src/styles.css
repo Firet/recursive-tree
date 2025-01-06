@@ -1,0 +1,38 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.level-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listitem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: lightcyan;
+  padding: 1em;
+  border: 1px solid rgb(0, 195, 255);
+  width: 50px;
+}
+
+.dynamic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 50vh;
+  width: 100%;
+}
