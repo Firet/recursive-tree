@@ -1,8 +1,23 @@
-# React + Vite
+## ♻️Recursive Tree🌲
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta app de React permite crear un árbol de datos.
+- Cada nodo se crea a partir de un formulario que llena el usuario.
+- El usuario elige el nombre del nodo y cuál es su padre
+- Todo el árbol se guarda en el local storage
+- Se puede borrar todo el árbol con el botón de borrar.
 
-Currently, two official plugins are available:
+----
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🏃‍♂️¿Cómo correr esta app?
+
+1️⃣ Primero, instalá las dependencias.
+```bash
+npm install
+```
+2️⃣ Segundo, levantá el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+💻 Después, podés abrir [localhost:5173](http://localhost:5173) con tu navegador para ver el resultado.
