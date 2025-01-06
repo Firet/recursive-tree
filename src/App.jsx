@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import { findNodeOriginal } from "./helpers/findNodeOriginal";
 import "./styles.css";
 import useLocalStorage from "./hooks/useLocalStorage";
+import { findNodeAndDelete } from "./helpers/findNodeAndDelete";
 
 // The dynamic tree takes user input from the form and adds it to state
 export default function App() {
@@ -47,6 +48,16 @@ export default function App() {
 
   function handleRemoveTree() {
     setNewData([]);
+    setTreeInLocalStorage([]);
+  }
+
+  function deleteNode(node) {
+    console.log("remove", node);
+    let currentData = newData[0];
+    const afterDeleteData = findNodeAndDelete(node, currentData);
+    console.log("after Delete", afterDeleteData);
+    setNewData(afterDeleteData);
+    setTreeInLocalStorage(afterDeleteData);
   }
 
   return (
@@ -54,7 +65,7 @@ export default function App() {
       <Form handleSubmit={handleSubmitOriginal} />
       <section className="dynamic">
         <h2>Tree dynamic</h2>
-        <Tree dynamicData={newData} />
+        <Tree dynamicData={newData} deleteNode={deleteNode} />
       </section>
       <div>
         {/* <p> new data[0].name es: {newData[0]?.name}</p>

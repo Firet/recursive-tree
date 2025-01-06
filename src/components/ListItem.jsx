@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function ListItem(props) {
-  const { item, level } = props;
+  const { item, level, deleteNode } = props;
   console.log("%cInside Listitem", "color: purple", item);
   return (
     <article
@@ -10,7 +10,10 @@ export default function ListItem(props) {
         marginTop: 30 * level + "px"
       }}
     >
-      {item.name}
+      <p>
+        {item.name}
+      </p>
+      <button onClick={() => deleteNode(item.name)}>Delete</button>
     </article>
   );
 }
