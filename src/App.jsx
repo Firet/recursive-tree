@@ -18,6 +18,10 @@ export default function App() {
   // Set the value received from the local storage to a local state
   const [newData, setNewData] = React.useState([treeInLocalStorage]);
   const [editable, setEditable] = React.useState(false);
+  
+  React.useEffect(() => {
+    resetTree();
+  }, []);
 
   console.log("treeInLocalStorage", treeInLocalStorage);
   console.log("top level app", newData);
