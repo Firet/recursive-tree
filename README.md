@@ -9,7 +9,7 @@ Es una app de React que permite crear un árbol de datos
 - Todo el árbol se guarda en el local storage con el hook useLocalStorage().
 - Se puede borrar todo el árbol o se puede borrar un nodo indivualmente.
 - Hay un toggle-switch para activar o desactivar la eliminación individual de los nodos.
-- Hay context provider en el componente Tree para evitar prop drilling entre componentes padres e hijos.
+- Hay context provider en el componente Tree para evitar prop drilling (de la variable isRemovable) entre componentes padres e hijos.
 - 💬 Hay comentarios y console logs en los componentes para que sea más fácil entender la lógica.
 - El la estructura del árbol de datos es así:
 ```json
@@ -47,6 +47,7 @@ npm run dev
 
 ## Cosas por hacer
 
+- Eliminar el prop drilling (del método DeleteNode y dynamicData) entre los components Tree y listItem 
 - Evitar que haya nodos con nombres repetidos (se generan errores al borrarlos).
 - Crear hijos a través de cada nodo y no desde la página principal.
 - Mejorar la interfaz visual.
