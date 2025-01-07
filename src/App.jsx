@@ -7,7 +7,7 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import { findNodeAndDelete } from "./helpers/findNodeAndDelete";
 import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
-import { EditableContext } from "./context/EditableContext";
+import { TreeContext } from "./context/TreeContext";
 
 // The dynamic tree takes user input from the form and adds it to state
 export default function App() {
@@ -17,7 +17,7 @@ export default function App() {
     []
   );
   // Set the value received from the local storage to a local state
-  const [editable, setEditable] = useState(false);
+  const [removable, setRemovable] = useState(false);
   console.log("top level app", treeInLocalStorage);
 
   function handleSubmitOriginal(event, incoming) {
@@ -62,10 +62,10 @@ export default function App() {
       <h2>Recursive Tree</h2>
 
       <div className="toggle-switch">
-        <span>Enable tree editing</span>
+        <span>Enable individual node deletion </span>
         <Switch
-          checked={editable}
-          onChange={(event) => setEditable(event.target.checked)}
+          checked={removable}
+          onChange={(event) => setRemovable(event.target.checked)}
           inputProps={{ "aria-label": "controlled" }}
         />
       </div>
@@ -75,9 +75,9 @@ export default function App() {
 
       <Form handleSubmit={handleSubmitOriginal} />
       <section className="dynamic">
-        <EditableContext.Provider value={editable}>
+        <TreeContext.Provider value={removable}>
           <Tree dynamicData={treeInLocalStorage} deleteNode={deleteNode} />
-        </EditableContext.Provider>
+        </TreeContext.Provider>
       </section>
     </div>
   );

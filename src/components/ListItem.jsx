@@ -1,10 +1,10 @@
 import Button from '@mui/material/Button';
 import { useContext } from 'react';
-import { EditableContext } from "../context/EditableContext";
+import { TreeContext } from "../context/TreeContext";
 
 export default function ListItem(props) {
   const { item, level, deleteNode } = props;
-    const isEditable = useContext(EditableContext);
+    const isRemovable = useContext(TreeContext);
   
   console.log("%cInside Listitem", "color: purple", item);
   return (
@@ -17,7 +17,7 @@ export default function ListItem(props) {
       <p>
         {item.name}
       </p>
-      {isEditable && <Button onClick={() => deleteNode(item.name)}>Delete</Button>}
+      {isRemovable && <Button onClick={() => deleteNode(item.name)}>Delete Node</Button>}
     </article>
   );
 }
