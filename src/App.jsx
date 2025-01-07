@@ -16,15 +16,12 @@ export default function App() {
     []
   );
   // Set the value received from the local storage to a local state
-  const [newData, setNewData] = useState([treeInLocalStorage]);
   const [editable, setEditable] = useState(false);
   
   useEffect(() => {
     resetTree();
   }, []);
-
-  console.log("treeInLocalStorage", treeInLocalStorage);
-  console.log("top level app", newData);
+  console.log("top level app", treeInLocalStorage);
 
   function handleSubmitOriginal(event, incoming) {
     event.preventDefault();
@@ -32,12 +29,12 @@ export default function App() {
     let { parent } = incoming;
     console.log("incoming", incoming);
 
-    if (newData.length === 0) {
-      setNewData((oldData) => [...oldData, incoming]);
+    if (treeInLocalStorage.length === 0) {
+      setTreeInLocalStorage((oldData) => [...oldData, incoming]);
       console.log("%cFIRST COMPONENT", "color: orange", incoming);
     } else {
       console.log("adding a child");
-      let currentData = newData[0];
+      let currentData = treeInLocalStorage[0];
       if (!parent) {
         parent = currentData.name;
         incoming.parent = parent;
@@ -46,23 +43,20 @@ export default function App() {
       // we need to loop throught the current tree to find the matching parent
       // once found, we need to push the new node to the array of children of that parent node
       const newChild = findNodeOriginal(parent, incoming, currentData);
-      setNewData([newChild]);
       // When user submits the form, save the node to the local storage
-      setTreeInLocalStorage(newChild);
+      setTreeInLocalStorage([newChild]);
     }
   }
 
   function resetTree() {
-    setNewData([]);
     setTreeInLocalStorage([]);
   }
 
   function deleteNode(node) {
     console.log("remove", node);
-    let currentData = newData[0];
+    let currentData = treeInLocalStorage[0];
     const afterDeleteData = findNodeAndDelete(node, currentData);
     console.log("after Delete", afterDeleteData);
-    setNewData(afterDeleteData);
     setTreeInLocalStorage(afterDeleteData);
   }
 
@@ -71,7 +65,7 @@ export default function App() {
       <Form handleSubmit={handleSubmitOriginal} />
       <section className="dynamic">
         <h2>Recursive Tree</h2>
-        <Tree dynamicData={newData} deleteNode={deleteNode} editable={editable} />
+        <Tree dynamicData={treeInLocalStorage} deleteNode={deleteNode} editable={editable} />
       </section>
       <Button variant="contained" type="button" onClick={resetTree}>
         Reset Tree
