@@ -13,20 +13,19 @@ Es una app de React que permite crear un árbol de datos
 - El la estructura del árbol de datos es así:
 ```json
 {
-	title: “raíz del árbol”,
-	children: [
-		{
-		title: “hijo1”,
-		children: [...]
-		},
-		{
-		title: “hijo2”,
-		children: [...]
-		}
-	]
+  "title": "raíz del árbol",
+  "children": [
+    {
+      "title": "primer hijo",
+      "children": []
+    },
+            {
+      "title": "segundo hijo",
+      "children": []
+    }
+    ]
 }
 ```
-
 ----
 
 ## 🏃‍♂️¿Cómo correr esta app?
