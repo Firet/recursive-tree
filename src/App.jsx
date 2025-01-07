@@ -1,12 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Tree from "./components/Tree";
 import Form from "./components/Form";
 import { findNodeOriginal } from "./helpers/findNodeOriginal";
 import "./styles.css";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { findNodeAndDelete } from "./helpers/findNodeAndDelete";
-import Button from '@mui/material/Button';
-import Switch from '@mui/material/Switch';
+import Button from "@mui/material/Button";
+import Switch from "@mui/material/Switch";
+import { EditableContext } from "./context/EditableContext";
 
 // The dynamic tree takes user input from the form and adds it to state
 export default function App() {
@@ -65,7 +66,7 @@ export default function App() {
         <Switch
           checked={editable}
           onChange={(event) => setEditable(event.target.checked)}
-          inputProps={{ 'aria-label': 'controlled' }}
+          inputProps={{ "aria-label": "controlled" }}
         />
       </div>
       <Button variant="contained" type="button" onClick={resetTree}>
@@ -74,9 +75,10 @@ export default function App() {
 
       <Form handleSubmit={handleSubmitOriginal} />
       <section className="dynamic">
-        <Tree dynamicData={treeInLocalStorage} deleteNode={deleteNode} editable={editable} />
+        <EditableContext.Provider value={editable}>
+          <Tree dynamicData={treeInLocalStorage} deleteNode={deleteNode} />
+        </EditableContext.Provider>
       </section>
-
     </div>
   );
 }
