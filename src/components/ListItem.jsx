@@ -3,9 +3,9 @@ import { useContext } from 'react';
 import { TreeContext } from "../context/TreeContext";
 
 export default function ListItem(props) {
-  const { item, level, deleteNode } = props;
-    const isRemovable = useContext(TreeContext);
-  
+  const { item, level } = props;
+  const { isRemovable, deleteNode } = useContext(TreeContext);
+
   console.log("%cInside Listitem", "color: purple", item);
   return (
     <article

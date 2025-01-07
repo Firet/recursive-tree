@@ -47,7 +47,6 @@ npm run dev
 
 ## Cosas por hacer
 
-- Eliminar el prop drilling (del método DeleteNode y dynamicData) entre los components Tree y listItem 
 - Evitar que haya nodos con nombres repetidos (se generan errores al borrarlos).
 - Crear hijos a través de cada nodo y no desde la página principal.
 - Mejorar la interfaz visual.

@@ -15,7 +15,7 @@ export default function App() {
     "treeInLocalStorage",
     []
   );
-  const [removable, setRemovable] = useState(false);
+  const [isRemovable, setIsRemovable] = useState(false);
   console.log("top level app", treeInLocalStorage);
 
   function handleSubmitOriginal(event, incoming) {
@@ -62,8 +62,8 @@ export default function App() {
       <div className="toggle-switch">
         <span>Enable individual node deletion </span>
         <Switch
-          checked={removable}
-          onChange={(event) => setRemovable(event.target.checked)}
+          checked={isRemovable}
+          onChange={(event) => setIsRemovable(event.target.checked)}
           inputProps={{ "aria-label": "controlled" }}
         />
       </div>
@@ -73,8 +73,8 @@ export default function App() {
 
       <Form handleSubmit={handleSubmitOriginal} />
       <section className="dynamic">
-        <TreeContext.Provider value={removable}>
-          <Tree dynamicData={treeInLocalStorage} deleteNode={deleteNode} />
+        <TreeContext.Provider value={{isRemovable, deleteNode}}>
+          <Tree dynamicData={treeInLocalStorage}/>
         </TreeContext.Provider>
       </section>
     </div>
