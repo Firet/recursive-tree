@@ -9,14 +9,12 @@ import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
 import { TreeContext } from "./context/TreeContext";
 
-// The dynamic tree takes user input from the form and adds it to state
 export default function App() {
   // Get the value from local storage if it exists
   const [treeInLocalStorage, setTreeInLocalStorage] = useLocalStorage(
     "treeInLocalStorage",
     []
   );
-  // Set the value received from the local storage to a local state
   const [removable, setRemovable] = useState(false);
   console.log("top level app", treeInLocalStorage);
 
