@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Tree from "./components/Tree";
 import Form from "./components/Form";
 import { findNodeOriginal } from "./helpers/findNodeOriginal";
@@ -18,9 +18,6 @@ export default function App() {
   // Set the value received from the local storage to a local state
   const [editable, setEditable] = useState(false);
   
-  useEffect(() => {
-    resetTree();
-  }, []);
   console.log("top level app", treeInLocalStorage);
 
   function handleSubmitOriginal(event, incoming) {
