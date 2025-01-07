@@ -17,7 +17,6 @@ export default function App() {
   );
   // Set the value received from the local storage to a local state
   const [editable, setEditable] = useState(false);
-  
   console.log("top level app", treeInLocalStorage);
 
   function handleSubmitOriginal(event, incoming) {
@@ -59,25 +58,25 @@ export default function App() {
 
   return (
     <div className="App">
-      <Form handleSubmit={handleSubmitOriginal} />
-      <section className="dynamic">
-        <h2>Recursive Tree</h2>
-        <Tree dynamicData={treeInLocalStorage} deleteNode={deleteNode} editable={editable} />
-      </section>
-      <Button variant="contained" type="button" onClick={resetTree}>
-        Reset Tree
-      </Button>
+      <h2>Recursive Tree</h2>
 
       <div className="toggle-switch">
-      <h4>Enable tree editing</h4>
-
+        <span>Enable tree editing</span>
         <Switch
           checked={editable}
           onChange={(event) => setEditable(event.target.checked)}
           inputProps={{ 'aria-label': 'controlled' }}
         />
-
       </div>
+      <Button variant="contained" type="button" onClick={resetTree}>
+        Reset Tree
+      </Button>
+
+      <Form handleSubmit={handleSubmitOriginal} />
+      <section className="dynamic">
+        <Tree dynamicData={treeInLocalStorage} deleteNode={deleteNode} editable={editable} />
+      </section>
+
     </div>
   );
 }
