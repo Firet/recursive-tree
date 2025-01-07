@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Tree from "./components/Tree";
 import Form from "./components/Form";
 import { findNodeOriginal } from "./helpers/findNodeOriginal";
@@ -16,10 +16,10 @@ export default function App() {
     []
   );
   // Set the value received from the local storage to a local state
-  const [newData, setNewData] = React.useState([treeInLocalStorage]);
-  const [editable, setEditable] = React.useState(false);
+  const [newData, setNewData] = useState([treeInLocalStorage]);
+  const [editable, setEditable] = useState(false);
   
-  React.useEffect(() => {
+  useEffect(() => {
     resetTree();
   }, []);
 

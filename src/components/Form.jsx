@@ -1,12 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 export default function Form(props) {
   const { handleSubmit } = props;
 
-  const [newName, setNewName] = React.useState("");
-  const [parent, setParent] = React.useState("");
+  const [newName, setNewName] = useState("");
+  const [parent, setParent] = useState("");
 
   return (
     <form
