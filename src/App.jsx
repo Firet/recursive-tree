@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Tree from "./components/Tree";
 import Form from "./components/Form";
-import { findNodeOriginal } from "./helpers/findNodeOriginal";
+import { findNode } from "./helpers/findNode";
 import "./styles.css";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { findNodeAndDelete } from "./helpers/findNodeAndDelete";
@@ -10,7 +10,7 @@ import Switch from "@mui/material/Switch";
 import { TreeContext } from "./context/TreeContext";
 
 export default function App() {
-  // Get the value from local storage if it exists
+  // Get the tree from local storage if it exists
   const [treeInLocalStorage, setTreeInLocalStorage] = useLocalStorage(
     "treeInLocalStorage",
     []
@@ -18,7 +18,7 @@ export default function App() {
   const [isRemovable, setIsRemovable] = useState(false);
   console.log("top level app", treeInLocalStorage);
 
-  function handleSubmitOriginal(event, incoming) {
+  function createNewChild(event, incoming) {
     event.preventDefault();
 
     let { parent } = incoming;
@@ -37,7 +37,7 @@ export default function App() {
       console.log("currentData", currentData, "parent", currentData.name);
       // we need to loop throught the current tree to find the matching parent
       // once found, we need to push the new node to the array of children of that parent node
-      const newChild = findNodeOriginal(parent, incoming, currentData);
+      const newChild = findNode(parent, incoming, currentData);
       // When user submits the form, save the node to the local storage
       setTreeInLocalStorage([newChild]);
     }
@@ -71,10 +71,10 @@ export default function App() {
         Reset Tree
       </Button>
 
-      <Form handleSubmit={handleSubmitOriginal} />
-      <section className="dynamic">
+      <Form handleSubmit={createNewChild} />
+      <section className="tree-section">
         <TreeContext.Provider value={{isRemovable, deleteNode}}>
-          <Tree dynamicData={treeInLocalStorage}/>
+          <Tree treeNodeData={treeInLocalStorage}/>
         </TreeContext.Provider>
       </section>
     </div>
