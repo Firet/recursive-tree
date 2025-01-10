@@ -1,7 +1,7 @@
 export function findNodeAndDelete(nodeName, parentNode) {
     // removing the root node will remove all the allChildren, so we start over
     console.log("delete nodeName", nodeName, "parentNode", parentNode);
-    if (parentNode.parent === null && parentNode.name === nodeName) {
+    if (parentNode.name === nodeName) {
       console.log("parent node deleting");
       return [];
     }
