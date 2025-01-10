@@ -47,8 +47,5 @@ npm run dev
 
 ## Cosas por hacer
 
-- Evitar que haya nodos con nombres repetidos (se generan errores al borrarlos).
 - Crear hijos a través de cada nodo y no desde la página principal.
 - Mejorar la interfaz visual.
-
-
