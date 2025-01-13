@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Tree from "./components/Tree";
 import Form from "./components/Form";
+import { Link } from "react-router";
 import { findNode } from "./helpers/findNode";
 import "./styles.css";
 import useLocalStorage from "./hooks/useLocalStorage";
@@ -58,7 +59,7 @@ export default function App() {
   return (
     <div className="App">
       <h2>Recursive Tree</h2>
-
+      <Link to="/tutorial">Read Tutorial</Link>
       <div className="toggle-switch">
         <span>Enable individual node deletion </span>
         <Switch
@@ -73,8 +74,8 @@ export default function App() {
 
       <Form handleSubmit={createNewChild} />
       <section className="tree-section">
-        <TreeContext.Provider value={{isRemovable, deleteNode}}>
-          <Tree treeNodeData={treeInLocalStorage}/>
+        <TreeContext.Provider value={{ isRemovable, deleteNode }}>
+          <Tree treeNodeData={treeInLocalStorage} />
         </TreeContext.Provider>
       </section>
     </div>
