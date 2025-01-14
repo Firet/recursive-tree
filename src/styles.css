@@ -29,9 +29,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: lightcyan;
   padding: 1em;
-  border: 1px solid rgb(0, 195, 255);
   width: 20%;
 }
 
