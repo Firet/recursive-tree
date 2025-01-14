@@ -8,6 +8,7 @@ import { findNodeAndDelete } from "./helpers/findNodeAndDelete";
 import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
 import { TreeContext } from "./context/TreeContext";
+import { Snackbar, Alert } from "@mui/material";
 
 export default function App() {
   // Get the tree from local storage if it exists
@@ -16,6 +17,10 @@ export default function App() {
     [],
   );
   const [isRemovable, setIsRemovable] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackBarSeverity, setSnackBarSeverity] = useState("success");
+
   console.log("top level app", treeInLocalStorage);
 
   function createNewChild(event, incoming) {
@@ -25,6 +30,9 @@ export default function App() {
     console.log("incoming", incoming);
 
     if (treeInLocalStorage.length === 0) {
+      setSnackbarMessage("New Tree created successfully!");
+      setSnackbarOpen(true);
+      setSnackBarSeverity("success");
       setTreeInLocalStorage((oldData) => [...oldData, incoming]);
       console.log("%cFIRST COMPONENT", "color: orange", incoming);
     } else {
@@ -37,15 +45,30 @@ export default function App() {
       console.log("currentData", currentData, "parent", currentData.name);
       // we need to loop throught the current tree to find the matching parent
       // once found, we need to push the new node to the array of children of that parent node
-      const newChild = findNode(parent, incoming, currentData);
+      const { treeWithNewChild, nodeWasAdded } = findNode(parent, incoming, currentData);
       // When user submits the form, save the node to the local storage
-      setTreeInLocalStorage([newChild]);
+      if (nodeWasAdded) {
+        setSnackbarMessage("Node added successfully!");
+        setSnackbarOpen(true);
+        setSnackBarSeverity("success");
+      }
+      else {
+        setSnackbarMessage("Node was not added, a sibling with the same name was found!");
+        setSnackbarOpen(true);
+        setSnackBarSeverity("warning");
+      }
+      setTreeInLocalStorage([treeWithNewChild]);
     }
+
   }
 
   function resetTree() {
     setTreeInLocalStorage([]);
   }
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   function deleteNode(node) {
     console.log("remove", node);
@@ -76,6 +99,15 @@ export default function App() {
           <Tree treeNodeData={treeInLocalStorage} />
         </TreeContext.Provider>
       </section>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={4000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert onClose={handleSnackbarClose} severity={snackBarSeverity}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
