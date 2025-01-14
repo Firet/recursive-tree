@@ -1,12 +1,10 @@
 #root {
   width: 100%;
-  margin-top: 100px;
 }
 
 .App {
   font-family: sans-serif;
   text-align: center;
-  min-height: 100vh;
 }
 
 .level-wrapper {

@@ -1,6 +1,10 @@
 function Tutorial() {
   return (
-    <div>
+    <div
+      style={{
+        margin: '100px',
+      }}
+    >
       <h1>♻️ Recursive Tree</h1>
       <p>
         This is a React application that allows you to create tree-like data

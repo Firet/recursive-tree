@@ -2,17 +2,33 @@ import { NavLink, Link } from "react-router";
 
 export default function Header() {
   return (
-    <nav>
+    <nav
+      style={{
+        display: 'flex',
+        justifyContent: 'space-around',
+        backgroundColor: 'white',
+        border: '1px solid aquamarine',
+        alignItems: 'center',
+        height: '50px',
+      }}
+    >
       <NavLink
         to="/"
         className={({ isActive }) =>
           isActive ? "active" : ""
         }
+        style={{
+          color: 'black'
+        }}
       >
         Home
       </NavLink>
 
-      <Link to="/tutorial">Tutorial</Link>
+      <Link to="/tutorial"
+        style={{
+          color: 'black',
+        }}
+      >Tutorial</Link>
     </nav>
   );
 }
