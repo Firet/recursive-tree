@@ -7,7 +7,7 @@ export default function Header() {
         display: 'flex',
         justifyContent: 'space-around',
         backgroundColor: 'white',
-        border: '1px solid aquamarine',
+        border: '1px solid orange',
         alignItems: 'center',
         height: '50px',
       }}
@@ -18,7 +18,8 @@ export default function Header() {
           isActive ? "active" : ""
         }
         style={{
-          color: 'black'
+          color: 'black',
+          fontWeight: 'bold',
         }}
       >
         Home
@@ -27,6 +28,7 @@ export default function Header() {
       <Link to="/tutorial"
         style={{
           color: 'black',
+          fontWeight: 'bold',
         }}
       >Tutorial</Link>
     </nav>
