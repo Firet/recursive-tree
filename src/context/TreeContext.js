@@ -1,3 +1,6 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
-export const TreeContext = createContext({ isRemovable: false, deleteNode:  null });
+export const TreeContext = createContext({
+  isRemovable: false,
+  deleteNode: null,
+});

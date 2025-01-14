@@ -14,7 +14,7 @@ export default function App() {
   // Get the tree from local storage if it exists
   const [treeInLocalStorage, setTreeInLocalStorage] = useLocalStorage(
     "treeInLocalStorage",
-    []
+    [],
   );
   const [isRemovable, setIsRemovable] = useState(false);
   console.log("top level app", treeInLocalStorage);
