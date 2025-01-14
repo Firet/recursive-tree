@@ -1,5 +1,3 @@
-import { Link } from "react-router";
-
 function Tutorial() {
   return (
     <div>
@@ -39,7 +37,6 @@ function Tutorial() {
           logs to help you better understand the application's logic.
         </li>
       </ul>
-      <Link to="/">Go to tree</Link>
     </div>
   );
 }
