@@ -30,7 +30,7 @@ export default function Header() {
           color: 'black',
           fontWeight: 'bold',
         }}
-      >Tutorial</Link>
+      >How Does it work?</Link>
     </nav>
   );
 }

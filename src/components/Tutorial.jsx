@@ -5,7 +5,7 @@ function Tutorial() {
         margin: '100px',
       }}
     >
-      <h1>♻️ Recursive Tree</h1>
+      <h2>How Does it Work? 🏗️</h2>
       <p>
         This is a React application that allows you to create tree-like data
         structures.
