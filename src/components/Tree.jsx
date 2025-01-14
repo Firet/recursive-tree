@@ -1,4 +1,4 @@
-import ListItem from "./ListItem";
+import Node from "./Node";
 
 export default function Tree(props) {
   const { treeNodeData, level = 0 } = props;
@@ -10,7 +10,7 @@ export default function Tree(props) {
     <div className="level-wrapper">
       {treeNodeData.map((item) => (
         <div id={item.name} className="item" key={item.name}>
-          <ListItem item={item} level={level} />
+          <Node item={item} level={level} />
           <Tree treeNodeData={item.children} level={level + 1} />
         </div>
       ))}

@@ -3,16 +3,16 @@ import { useContext } from "react";
 import { TreeContext } from "../context/TreeContext";
 import CollapsibleCard from "./CollapsibleCard";
 
-export default function ListItem(props) {
+export default function Node(props) {
   const { item, level } = props;
   const { isRemovable, deleteNode } = useContext(TreeContext);
 
-  console.log("%cInside Listitem", "color: purple", item);
+  console.log("%cInside Node", "color: purple", item);
   return (
-    <article className="listitem">
+    <article className="node-container">
       <CollapsibleCard
         title={item.name}
-        className="listitem"
+        className="node-container"
         style={{
           marginTop: 30 * level + "px",
         }}
