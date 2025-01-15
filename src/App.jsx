@@ -65,6 +65,11 @@ export default function App() {
 
   function resetTree() {
     setTreeInLocalStorage([]);
+    setSnackbar({
+      open: true,
+      message: "Tree was erased",
+      severity: "info",
+    });
   }
 
   const handleSnackbarClose = () => {
@@ -76,6 +81,11 @@ export default function App() {
     let currentData = treeInLocalStorage[0];
     const afterDeleteData = findNodeAndDelete(node, currentData);
     console.log("after Delete", afterDeleteData);
+    setSnackbar({
+      open: true,
+      message: "Node was deleted",
+      severity: "info",
+    });
     setTreeInLocalStorage(afterDeleteData);
   }
 
