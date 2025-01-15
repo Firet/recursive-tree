@@ -17,9 +17,11 @@ export default function App() {
     [],
   );
   const [isRemovable, setIsRemovable] = useState(false);
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
-  const [snackBarSeverity, setSnackBarSeverity] = useState("success");
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
 
   console.log("top level app", treeInLocalStorage);
 
@@ -30,9 +32,11 @@ export default function App() {
     console.log("incoming", incoming);
 
     if (treeInLocalStorage.length === 0) {
-      setSnackbarMessage("New Tree created successfully!");
-      setSnackbarOpen(true);
-      setSnackBarSeverity("success");
+      setSnackbar({
+        open: true,
+        message: "New Tree created successfully!",
+        severity: "success",
+      });
       setTreeInLocalStorage((oldData) => [...oldData, incoming]);
       console.log("%cFIRST COMPONENT", "color: orange", incoming);
     } else {
@@ -47,16 +51,13 @@ export default function App() {
       // once found, we need to push the new node to the array of children of that parent node
       const { treeWithNewChild, nodeWasAdded } = findNode(parent, incoming, currentData);
       // When user submits the form, save the node to the local storage
-      if (nodeWasAdded) {
-        setSnackbarMessage("Node added successfully!");
-        setSnackbarOpen(true);
-        setSnackBarSeverity("success");
-      }
-      else {
-        setSnackbarMessage("Node was not added, a sibling with the same name was found!");
-        setSnackbarOpen(true);
-        setSnackBarSeverity("warning");
-      }
+      setSnackbar({
+        open: true,
+        message: nodeWasAdded
+          ? "Node added successfully!"
+          : "Node was not added, a sibling with the same name was found!",
+        severity: nodeWasAdded ? "success" : "warning",
+      });
       setTreeInLocalStorage([treeWithNewChild]);
     }
 
@@ -67,7 +68,7 @@ export default function App() {
   }
 
   const handleSnackbarClose = () => {
-    setSnackbarOpen(false);
+    setSnackbar({ ...snackbar, open: false })
   };
 
   function deleteNode(node) {
@@ -100,12 +101,12 @@ export default function App() {
         </TreeContext.Provider>
       </section>
       <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={4000}
+        open={snackbar.open}
+        autoHideDuration={3000}
         onClose={handleSnackbarClose}
       >
-        <Alert onClose={handleSnackbarClose} severity={snackBarSeverity}>
-          {snackbarMessage}
+        <Alert onClose={handleSnackbarClose} severity={snackbar.severity}>
+          {snackbar.message}
         </Alert>
       </Snackbar>
     </div>
