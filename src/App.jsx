@@ -49,7 +49,11 @@ export default function App() {
       console.log("currentData", currentData, "parent", currentData.name);
       // we need to loop throught the current tree to find the matching parent
       // once found, we need to push the new node to the array of children of that parent node
-      const { treeWithNewChild, nodeWasAdded } = findNode(parent, incoming, currentData);
+      const { treeWithNewChild, nodeWasAdded } = findNode(
+        parent,
+        incoming,
+        currentData,
+      );
       // When user submits the form, save the node to the local storage
       setSnackbar({
         open: true,
@@ -60,7 +64,6 @@ export default function App() {
       });
       setTreeInLocalStorage([treeWithNewChild]);
     }
-
   }
 
   function resetTree() {
@@ -73,7 +76,7 @@ export default function App() {
   }
 
   const handleSnackbarClose = () => {
-    setSnackbar({ ...snackbar, open: false })
+    setSnackbar({ ...snackbar, open: false });
   };
 
   function deleteNode(node) {

@@ -2,7 +2,7 @@ function Tutorial() {
   return (
     <div
       style={{
-        margin: '100px',
+        margin: "100px",
       }}
     >
       <h2>How Does it Work? 🏗️</h2>
