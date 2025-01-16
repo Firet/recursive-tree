@@ -1,5 +1,5 @@
 import React from "react";
-import Node from "../components/Node";
+import Node from "./Node";
 import { TreeContext } from "../context/TreeContext";
 
 export default {

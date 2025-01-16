@@ -1,5 +1,5 @@
 import React from "react";
-import Tree from "../components/Tree";
+import Tree from "./Tree";
 import { TreeContext } from "../context/TreeContext";
 import "../styles.css";
 
