@@ -1,4 +1,4 @@
-export function findNode(nodeName, childToInsert, parentNode) {
+export function findParentAndAddChild(nodeName, childToInsert, parentNode) {
   console.log("nodeName", nodeName, "parentNode", parentNode.name);
 
   let treeWithNewChild = parentNode;
@@ -23,7 +23,7 @@ export function findNode(nodeName, childToInsert, parentNode) {
     // Recursively search through children
     for (let i = 0; i < parentNode.children.length; i += 1) {
       const { treeWithNewChild: updatedChild, nodeWasAdded: childAdded } =
-        findNode(nodeName, childToInsert, parentNode.children[i]);
+        findParentAndAddChild(nodeName, childToInsert, parentNode.children[i]);
 
       // Update parentNode if a child was added during recursion
       if (childAdded) {

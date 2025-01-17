@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Tree from "./components/Tree";
 import Form from "./components/Form";
-import { findNode } from "./helpers/findNode";
+import { findParentAndAddChild } from "./helpers/findParentAndAddChild";
 import "./styles.css";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { findNodeAndDelete } from "./helpers/findNodeAndDelete";
@@ -49,7 +49,7 @@ export default function App() {
       console.log("currentData", currentData, "parent", currentData.name);
       // we need to loop throught the current tree to find the matching parent
       // once found, we need to push the new node to the array of children of that parent node
-      const { treeWithNewChild, nodeWasAdded } = findNode(
+      const { treeWithNewChild, nodeWasAdded } = findParentAndAddChild(
         parent,
         incoming,
         currentData,
