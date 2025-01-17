@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Layout from "./components/Layout.jsx";
 import Tutorial from "./pages/Tutorial.jsx";
-import HomePage from "./pages/HomePage.jsx";
+import Home from "./pages/Home.jsx";
 import "./styles.css";
 
 createRoot(document.getElementById("root")).render(
@@ -11,7 +11,7 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Home />} />
           <Route path="/tutorial" element={<Tutorial />} />
         </Route>
       </Routes>

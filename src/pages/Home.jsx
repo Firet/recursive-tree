@@ -10,7 +10,7 @@ import Switch from "@mui/material/Switch";
 import { TreeContext } from "../context/TreeContext";
 import { Snackbar, Alert } from "@mui/material";
 
-export default function HomePage() {
+export default function Home() {
   // Get the tree from local storage if it exists
   const [treeInLocalStorage, setTreeInLocalStorage] = useLocalStorage(
     "treeInLocalStorage",
