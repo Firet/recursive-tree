@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Tree from "./components/Tree";
-import Form from "./components/Form";
-import { findParentAndAddChild } from "./helpers/findParentAndAddChild";
-import "./styles.css";
-import useLocalStorage from "./hooks/useLocalStorage";
-import { findNodeAndDelete } from "./helpers/findNodeAndDelete";
+import Tree from "../components/Tree";
+import Form from "../components/Form";
+import { findParentAndAddChild } from "../helpers/findParentAndAddChild";
+import "../styles.css";
+import useLocalStorage from "../hooks/useLocalStorage";
+import { findNodeAndDelete } from "../helpers/findNodeAndDelete";
 import Button from "@mui/material/Button";
 import Switch from "@mui/material/Switch";
-import { TreeContext } from "./context/TreeContext";
+import { TreeContext } from "../context/TreeContext";
 import { Snackbar, Alert } from "@mui/material";
 
 export default function HomePage() {
