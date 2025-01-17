@@ -10,7 +10,7 @@ import Switch from "@mui/material/Switch";
 import { TreeContext } from "./context/TreeContext";
 import { Snackbar, Alert } from "@mui/material";
 
-export default function App() {
+export default function HomePage() {
   // Get the tree from local storage if it exists
   const [treeInLocalStorage, setTreeInLocalStorage] = useLocalStorage(
     "treeInLocalStorage",
@@ -93,7 +93,7 @@ export default function App() {
   }
 
   return (
-    <div className="App">
+    <div className="home-page">
       <h2>Recursive Tree</h2>
       <div className="toggle-switch">
         <span>Enable individual node deletion </span>
