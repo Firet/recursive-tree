@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Layout from "./components/Layout.jsx";
 import Tutorial from "./pages/Tutorial.jsx";
 import HomePage from "./pages/HomePage.jsx";
-import "./index.css";
+import "./styles.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
